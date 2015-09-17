@@ -4,7 +4,8 @@ $apiKey   = "79fadafa61723d34582f591586d63cee33199216";
 $salt     = "2lmnle11aeucsgc0cw0go0o0gcow8sw";
 
 $nonce   = uniqid();
-$created = date('c');
+$now = new \DateTime('-30 seconds');
+$created = $now->format('c');
 
 $digest  = base64_encode(sha1(base64_decode($nonce) . $created . $apiKey.'{'.$salt.'}', true));
 
